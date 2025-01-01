@@ -1,0 +1,19 @@
+FROM python:latest
+
+# Copies application files to image
+COPY micro-3/app.py /app/
+# COPY key.txt /app/
+
+# Equivalent to cd
+WORKDIR /app
+
+#Install reqs
+RUN pip3 install flask
+RUN pip3 install requests
+
+# 'Flask stuff'
+ENV FLASK_APP=app.py
+#ENV FLASK_RUN_HOST=0.0.0.0
+
+# https://stackoverflow.com/questions/66269187/assigning-port-when-building-flask-docker-image
+CMD ["flask", "run", "--debug", "--host=0.0.0.0"]

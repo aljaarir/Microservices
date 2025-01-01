@@ -1,0 +1,9 @@
+docker build -t user_functions -f micro-1/Dockerfile.users .
+docker build -t document_functions -f micro-2/Dockerfile.documents .
+docker build -t search_functions -f micro-3/Dockerfile.search .
+docker build -t log_functions -f micro-4/Dockerfile.logs .
+docker run -d --name=user_functions_container --network=aljaarir -p 9000:5000 user_functions
+docker run -d --name=document_functions_container --network=aljaarir -p 9001:5000 document_functions
+docker run -d --name=search_functions_container --network=aljaarir -p 9002:5000 search_functions
+docker run -d --name=log_functions_container --network=aljaarir -p 9003:5000 log_functions
+
